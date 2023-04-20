@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import PropTypes from 'prop-types'
 import {Button, StyledForm, StyledInput} from '../addForm/AddForm.styled'
 import { useState } from 'react';
