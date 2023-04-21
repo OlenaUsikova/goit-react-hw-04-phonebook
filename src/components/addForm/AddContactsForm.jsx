@@ -3,11 +3,7 @@ import {Button, StyledForm, StyledInput} from '../addForm/AddForm.styled'
 import { useState } from 'react';
 
 export const AddContactForm = ({addContact}) => {
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
-  const [name, setName] = useState('');
+   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const handleChange = ( ev ) => {
