@@ -14,16 +14,14 @@ export const App = () => {
   //   ],
   //   filter: '',
   // };
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    const dataConst = localStorage.getItem('contacts');
+    if(dataConst) { return JSON.parse(dataConst)}
+    return []
+  });
+
   const [filter, setFilter] = useState('');
 
-  useEffect(()=>{
-    const dataCont = localStorage.getItem('contacts')
-      if(dataCont !== null){
-        setContacts({contacts:JSON.parse(dataCont)})
-    }
-  },[])
-    
   useEffect(()=>{
     localStorage.setItem("contacts", JSON.stringify(contacts))},[contacts])
  
@@ -46,8 +44,9 @@ export const App = () => {
       id: nanoid(),
       ...data,
     };
-    setContacts(prevState => [...prevState.contacts, newContact]);
+    setContacts(prevState => [...prevState, newContact]);
     };
+    
   const deleteContact = id => {
     setContacts((prevState) => {
       return prevState.filter(contact => contact.id !== id);
@@ -57,12 +56,12 @@ export const App = () => {
     setFilter(ev.currentTarget.value.toLowerCase())
   };
   const filteredContacts = () => {
-    if (setFilter) {
-      return setContacts.filter(contact =>
+    if (filter) {
+      return contacts.filter(contact =>
         contact.name.toLowerCase().includes(filter)
       );
     } else {
-      return setContacts;
+      return contacts;
     }
   };
       return (

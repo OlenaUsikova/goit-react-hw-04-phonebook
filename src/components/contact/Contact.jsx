@@ -9,7 +9,7 @@ export const Contact = ({contact:{name, number, id}, onDeleteContact}) => {
          }}>
         <p>{name}:</p>
         <p>{number}</p>
-        <Button type="button" onClick={() => {onDeleteContact(id)}}>Delete</Button>
+        <Button type="button" onClick={() => onDeleteContact(id)}>Delete</Button>
         </div>
     )
 };
